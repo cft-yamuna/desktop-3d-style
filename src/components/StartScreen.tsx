@@ -21,9 +21,9 @@ export default function StartScreen({ onStart }: StartScreenProps) {
           className="bg-cover bg-center bg-no-repeat transition-all transform hover:scale-105 shadow-2xl"
           style={{
             backgroundImage: 'url(/startbg.png)',
-            width: '477px',
-            height: '137px',
-            marginTop: '1120px'
+            width: '357.75px',
+            height: '102.75px',
+            marginTop: '840px'
           }}
         >
         </button>

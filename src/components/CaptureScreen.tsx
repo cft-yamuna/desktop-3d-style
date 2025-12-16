@@ -140,7 +140,7 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="relative bg-black rounded-2xl overflow-hidden shadow-2xl"
-          style={{ width: '781.63px', height: '1170.83px', border: '10px solid #FFCE00' }}
+          style={{ width: '586.22px', height: '878.12px', border: '7.5px solid #FFCE00' }}
         >
           <video
             ref={videoRef}
@@ -175,9 +175,9 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
         className="absolute left-1/2 transform -translate-x-1/2 bg-cover bg-center bg-no-repeat transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl"
         style={{
           backgroundImage: 'url(/capture.png)',
-          width: '619px',
-          height: '137px',
-          bottom: '120px',
+          width: '464.25px',
+          height: '102.75px',
+          bottom: '90px',
         }}
       >
       </button>
