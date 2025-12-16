@@ -140,7 +140,7 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="relative bg-black rounded-2xl overflow-hidden shadow-2xl"
-          style={{ width: '781.63px', height: '1170.83px' }}
+          style={{ width: '781.63px', height: '1170.83px', border: '10px solid #FFCE00' }}
         >
           <video
             ref={videoRef}

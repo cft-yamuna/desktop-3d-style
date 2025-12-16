@@ -36,23 +36,31 @@ export default function OutputScreen({ generatedImageUrl, onHome }: OutputScreen
 
         {/* Generated Image */}
         <div
-          className="rounded-2xl shadow-lg overflow-hidden"
-          style={{ width: '720px', height: '900px' }}
+          className="shadow-lg overflow-hidden"
+          style={{ width: '754.05px', height: '1131.07px', marginTop: '80px' }}
         >
           <img
             src={generatedImageUrl}
             alt="AI Generated Figurine"
-            className="w-full h-full rounded-lg shadow-md object-cover"
+            className="w-full h-full shadow-md object-cover"
           />
         </div>
 
         {/* Bottom Section - QR Code and Buttons */}
         <div className="flex items-center gap-10 mt-8 print:hidden">
           {/* QR Code */}
-          <div className="bg-white p-4 rounded-xl border-4 border-yellow-400">
+          <div
+            className="bg-white flex items-center justify-center overflow-hidden"
+            style={{
+              width: '299px',
+              height: '299px',
+              border: '10px solid #FFCE00',
+              borderRadius: '15px',
+            }}
+          >
             <QRCodeSVG
               value={generatedImageUrl}
-              size={180}
+              size={259}
               level="H"
               includeMargin={false}
             />
@@ -60,7 +68,7 @@ export default function OutputScreen({ generatedImageUrl, onHome }: OutputScreen
 
           {/* Text and Buttons */}
           <div className="flex flex-col items-start gap-4">
-            <p className="text-white text-2xl font-semibold">
+            <p className="text-white text-4xl font-semibold">
               Scan the QR code to<br />download image
             </p>
 
@@ -70,8 +78,8 @@ export default function OutputScreen({ generatedImageUrl, onHome }: OutputScreen
               className="bg-cover bg-center bg-no-repeat transition-all transform hover:scale-105 shadow-lg"
               style={{
                 backgroundImage: 'url(/download.png)',
-                width: '280px',
-                height: '70px',
+                width: '399.61px',
+                height: '103px',
               }}
             >
             </button>
@@ -82,8 +90,8 @@ export default function OutputScreen({ generatedImageUrl, onHome }: OutputScreen
               className="bg-cover bg-center bg-no-repeat transition-all transform hover:scale-105 shadow-lg"
               style={{
                 backgroundImage: 'url(/restart.png)',
-                width: '280px',
-                height: '70px',
+                width: '399.61px',
+                height: '103px',
               }}
             >
             </button>
