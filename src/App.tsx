@@ -36,9 +36,13 @@ function App() {
   const handleSubmit = async () => {
     setCurrentScreen('processing');
 
-    const figurinePrompt = `In a realistic setting, a single figurine is placed on a computer desk. The figurine stands on a round, clear acrylic base without any text. The computer screen displays the 3D modeling process of this figurine. Beside the monitor sits a toy packaging box, styled like premium collectible figure packaging, decorated with original artwork. The box design features flat 2D illustrations.
+    const figurinePrompt = `Generate the output image in PORTRAIT orientation (2:3 aspect ratio, taller than wide).
 
-Generate a figurine that looks EXACTLY like the person in this photo - same face, features, hair, and clothing. The figurine must be instantly recognizable as this specific person.`;
+In a realistic setting, a single figurine is placed on a computer desk. The figurine stands on a round, clear acrylic base without any text. The computer screen displays the 3D modeling process of this figurine. Beside the monitor sits a toy packaging box, styled like premium collectible figure packaging, decorated with original artwork. The box design features flat 2D illustrations.
+
+Generate a figurine that looks EXACTLY like the person in this photo - same face, features, hair, and clothing. The figurine must be instantly recognizable as this specific person.
+
+IMPORTANT: The output image MUST be in PORTRAIT orientation (vertical, taller than wide, 2:3 ratio).`;
 
     try {
       // Get base64 from captured image

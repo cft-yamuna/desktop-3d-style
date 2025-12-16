@@ -45,13 +45,44 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
   const doCapture = useCallback(() => {
     if (!videoRef.current) return;
 
+    // Set canvas to portrait 2:3 ratio
+    const targetWidth = 720;
+    const targetHeight = 1080;
+
     const canvas = document.createElement('canvas');
-    canvas.width = videoRef.current.videoWidth;
-    canvas.height = videoRef.current.videoHeight;
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
     const ctx = canvas.getContext('2d');
 
     if (ctx) {
-      ctx.drawImage(videoRef.current, 0, 0);
+      // Calculate crop to fit portrait ratio
+      const videoWidth = videoRef.current.videoWidth;
+      const videoHeight = videoRef.current.videoHeight;
+
+      const videoAspect = videoWidth / videoHeight;
+      const targetAspect = targetWidth / targetHeight;
+
+      let sourceX = 0;
+      let sourceY = 0;
+      let sourceWidth = videoWidth;
+      let sourceHeight = videoHeight;
+
+      if (videoAspect > targetAspect) {
+        // Video is wider, crop sides
+        sourceWidth = videoHeight * targetAspect;
+        sourceX = (videoWidth - sourceWidth) / 2;
+      } else {
+        // Video is taller, crop top/bottom
+        sourceHeight = videoWidth / targetAspect;
+        sourceY = (videoHeight - sourceHeight) / 2;
+      }
+
+      ctx.drawImage(
+        videoRef.current,
+        sourceX, sourceY, sourceWidth, sourceHeight,
+        0, 0, targetWidth, targetHeight
+      );
+
       const imageDataUrl = canvas.toDataURL('image/jpeg', 0.9);
       stopCamera();
       onCapture(imageDataUrl);
