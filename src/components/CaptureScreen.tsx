@@ -82,7 +82,10 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+      <div
+        className="min-h-screen flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: 'url(/bg2.png)' }}
+      >
         <div className="text-center space-y-4">
           <AlertCircle className="w-16 h-16 text-red-400 mx-auto" />
           <h2 className="text-2xl font-semibold text-white">Camera Access Required</h2>
@@ -99,9 +102,15 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col">
-      <div className="flex-1 flex items-center justify-center p-4">
-        <div className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
+    <div
+      className="h-screen w-screen overflow-hidden relative bg-cover bg-center"
+      style={{ backgroundImage: 'url(/bg2.png)' }}
+    >
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          className="relative bg-black rounded-2xl overflow-hidden shadow-2xl"
+          style={{ width: '781.63px', height: '1170.83px' }}
+        >
           <video
             ref={videoRef}
             autoPlay
@@ -129,16 +138,18 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
         </div>
       </div>
 
-      <div className="p-8 flex justify-center">
-        <button
-          onClick={startCountdown}
-          disabled={!isReady || countdown !== null}
-          className="group relative px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-xl"
-        >
-          <Camera className="inline-block w-6 h-6 mr-2" />
-          {countdown !== null ? `Capturing in ${countdown}...` : 'Capture Photo'}
-        </button>
-      </div>
+      <button
+        onClick={startCountdown}
+        disabled={!isReady || countdown !== null}
+        className="absolute left-1/2 transform -translate-x-1/2 bg-cover bg-center bg-no-repeat transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl"
+        style={{
+          backgroundImage: 'url(/capture.png)',
+          width: '619px',
+          height: '137px',
+          bottom: '120px',
+        }}
+      >
+      </button>
     </div>
   );
 }

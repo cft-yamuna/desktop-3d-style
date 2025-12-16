@@ -1,4 +1,3 @@
-import { RotateCcw, Send } from 'lucide-react';
 
 interface PreviewScreenProps {
   imageDataUrl: string;
@@ -8,38 +7,44 @@ interface PreviewScreenProps {
 
 export default function PreviewScreen({ imageDataUrl, onRetake, onSubmit }: PreviewScreenProps) {
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col">
-      <div className="flex-1 flex items-center justify-center p-4">
-        <div className="w-full max-w-4xl space-y-6">
-          <h2 className="text-3xl font-bold text-white text-center">
-            Preview Your Capture
-          </h2>
-
-          <div className="relative aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src={imageDataUrl}
-              alt="Captured"
-              className="w-full h-full object-cover"
-            />
-          </div>
+    <div
+      className="h-screen w-screen overflow-hidden relative bg-cover bg-center"
+      style={{ backgroundImage: 'url(/bg2.png)' }}
+    >
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          className="relative bg-black rounded-2xl overflow-hidden shadow-2xl"
+          style={{ width: '781.63px', height: '1170.83px' }}
+        >
+          <img
+            src={imageDataUrl}
+            alt="Captured"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
-      <div className="p-8 flex justify-center gap-4">
+      <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-4" style={{ bottom: '120px' }}>
         <button
           onClick={onRetake}
-          className="px-8 py-4 bg-gray-700 text-white rounded-full text-lg font-semibold hover:bg-gray-600 transition-all shadow-xl"
+          className="bg-cover bg-center bg-no-repeat transition-all transform hover:scale-105 shadow-xl"
+          style={{
+            backgroundImage: 'url(/retake.png)',
+            width: '399px',
+            height: '102px',
+          }}
         >
-          <RotateCcw className="inline-block w-6 h-6 mr-2" />
-          Retake
         </button>
 
         <button
           onClick={onSubmit}
-          className="px-8 py-4 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-700 transition-all shadow-xl"
+          className="bg-cover bg-center bg-no-repeat transition-all transform hover:scale-105 shadow-xl"
+          style={{
+            backgroundImage: 'url(/submit.png)',
+       width: '399px',
+            height: '102px',
+          }}
         >
-          <Send className="inline-block w-6 h-6 mr-2" />
-          Submit
         </button>
       </div>
     </div>
