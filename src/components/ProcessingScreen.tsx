@@ -8,7 +8,7 @@ export default function ProcessingScreen() {
         playsInline
         className="w-full h-full object-cover"
       >
-        <source src="/loading.mp4" type="video/mp4" />
+        <source src="/load.mp4" type="video/mp4" />
       </video>
     </div>
   );

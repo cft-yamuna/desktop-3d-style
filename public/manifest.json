@@ -1,0 +1,24 @@
+{
+    "name": "3D Figurine Generator",
+    "short_name": "3D Figurine",
+    "description": "Create personalized 3D figurines from your photos",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#6366f1",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "192x192 512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "photo",
+        "utilities",
+        "personalization"
+    ],
+    "prefer_related_applications": false
+}

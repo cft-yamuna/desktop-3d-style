@@ -38,11 +38,18 @@ function App() {
 
     const figurinePrompt = `Generate the output image in PORTRAIT orientation (4:6 aspect ratio, taller than wide).
 
-In a realistic setting, a single figurine is placed on a computer desk. The figurine stands on a round, clear acrylic base without any text. The computer screen displays the 3D modeling process of this figurine. Beside the monitor sits a toy packaging box, styled like premium collectible figure packaging, decorated with original artwork. The box design features flat 2D illustrations.
+Create a HYPER-REALISTIC, 8k resolution close-up photograph of a premium custom figurine placed on a desk.
 
-Generate a figurine that looks EXACTLY like the person in this photo - same face, features, hair, and clothing. The figurine must be instantly recognizable as this specific person.
+THE FIGURINE:
+- It must look EXACTLY like the person in the photo—capturing their precise facial features, skin texture, hairstyle, and outfit with uncanny resemblance.
+- The figure has a high-quality hand-painted resin finish with realistic shading and textures.
+- It stands on a simple, round, clear acrylic base.
 
-IMPORTANT: The output image MUST be in PORTRAIT orientation (vertical, taller than wide, 4:6 ratio).`;
+THE ENVIRONMENT:
+- The setting is a realistic workspace. Behind the figure, a computer monitor displays 3D sculpting software showing the digital model of this same person.
+- Next to it sits a premium "Collector's Edition" packaging box featuring stylistic 2D artwork of the character.
+- Lighting is cinematic and soft (studio quality), highlighting the figurine against a naturally blurred background (depth of field).
+- Overall look: Masterpiece, product photography, unreal engine 5 render style, extremely detailed.`;
 
     try {
       // Get base64 from captured image
@@ -69,7 +76,7 @@ IMPORTANT: The output image MUST be in PORTRAIT orientation (vertical, taller th
       console.log('Calling Gemini API with gemini-3-pro-image-preview model...');
 
       const response = await ai.models.generateContentStream({
-        model: 'gemini-3-pro-image-preview',
+        model: 'gemini-2.5-flash-image-preview',
         config: {
           responseModalities: ['IMAGE', 'TEXT'],
         },
