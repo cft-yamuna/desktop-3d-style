@@ -37,7 +37,7 @@ export default function OutputScreen({ generatedImageUrl, onHome }: OutputScreen
         {/* Generated Image */}
         <div
           className="shadow-lg overflow-hidden"
-          style={{ width: '565.54px', height: '848.3px', marginTop: '60px' }}
+          style={{ width: '465.54px', height: '648.3px', marginTop: '60px' }}
         >
           <img
             src={generatedImageUrl}

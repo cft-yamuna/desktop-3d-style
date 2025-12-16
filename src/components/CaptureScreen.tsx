@@ -177,7 +177,7 @@ export default function CaptureScreen({ onCapture }: CaptureScreenProps) {
           backgroundImage: 'url(/capture.png)',
           width: '464.25px',
           height: '102.75px',
-          bottom: '90px',
+          bottom: '50px',
         }}
       >
       </button>
