@@ -67,11 +67,11 @@ The tent card must have PhonePe branding with the EXACT official logo:
 - The logo should appear as a clean, flat, professionally printed logo
 
 The tent card should have:
+- BACKGROUND COLOR: #5E20C1 (PhonePe purple) as the solid background color for the entire tent card
 - Premium matte or glossy cardstock finish
 - Clean A-frame/triangular tent card shape standing upright
 - Professional print quality with sharp edges
 - Realistic paper texture and subtle shadows
-- The PhonePe purple (#5F259F) as the primary brand color accent
 
 TENT CARD CONTENT LAYOUT (top to bottom):
 1. PhonePe logo at the very top (as described above)
