@@ -12,6 +12,60 @@ const ai = new GoogleGenAI({
   apiKey: import.meta.env.VITE_GEMINI_API_KEY,
 });
 
+const compositeImageWithBackdrop = async (
+  generatedImageBase64: string,
+  mimeType: string
+): Promise<Blob> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // Create canvas with backdrop dimensions (1200x1980)
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 1980;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Could not get canvas context');
+
+      // Load and draw backdrop image
+      const backdrop = new Image();
+      backdrop.crossOrigin = 'anonymous';
+      backdrop.onload = () => {
+        // Draw backdrop at full canvas size
+        ctx.drawImage(backdrop, 0, 0, 1200, 1980);
+
+        // Load and draw generated image
+        const generatedImage = new Image();
+        generatedImage.crossOrigin = 'anonymous';
+        generatedImage.onload = () => {
+          // Resize generated image to 832x1248 and center on backdrop
+          // Centered position: X = (1200 - 832) / 2 = 184, Y = (1980 - 1248) / 2 = 366
+          const targetWidth = 832;
+          const targetHeight = 1248;
+          const x = (1200 - targetWidth) / 2; // 184
+          const y = (1980 - targetHeight) / 2; // 366
+
+          // Draw generated image at calculated position with target dimensions
+          ctx.drawImage(generatedImage, x, y, targetWidth, targetHeight);
+
+          // Convert canvas to blob
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error('Failed to create blob from canvas'));
+            }
+          }, 'image/png');
+        };
+        generatedImage.onerror = () => reject(new Error('Failed to load generated image'));
+        generatedImage.src = `data:${mimeType};base64,${generatedImageBase64}`;
+      };
+      backdrop.onerror = () => reject(new Error('Failed to load backdrop image'));
+      backdrop.src = '/output_screen_bg.png';
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('start');
   const [capturedImage, setCapturedImage] = useState<string>('');
@@ -158,15 +212,17 @@ The tent card serves as a personalized branded promotional material featuring bo
         .from('cabphonepay')
         .getPublicUrl(capturedUploadData.path);
 
-      // Convert generated image base64 to blob and upload
-      const generatedImageBytes = Uint8Array.from(atob(generatedImageBase64), c => c.charCodeAt(0));
-      const generatedBlob = new Blob([generatedImageBytes], { type: generatedImageMimeType });
+      // Composite the generated image with backdrop before upload
+      const compositedBlob = await compositeImageWithBackdrop(
+        generatedImageBase64,
+        generatedImageMimeType
+      );
       const generatedFileName = `generated-${Date.now()}.png`;
 
       const { data: generatedUploadData, error: generatedUploadError } = await supabase.storage
         .from('cabphonepay')
-        .upload(generatedFileName, generatedBlob, {
-          contentType: generatedImageMimeType,
+        .upload(generatedFileName, compositedBlob, {
+          contentType: 'image/png', // Always PNG now since we composite
           cacheControl: '3600',
         });
 

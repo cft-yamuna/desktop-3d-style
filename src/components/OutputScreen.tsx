@@ -30,14 +30,14 @@ export default function OutputScreen({ generatedImageUrl, onHome }: OutputScreen
   return (
     <div
       className="h-screen w-screen overflow-hidden relative bg-cover bg-center"
-      style={{ backgroundImage: 'url(/bg3.png)' }}
+      style={{ backgroundImage: 'url(/output_screen_bg.png)' }}
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
 
         {/* Generated Image */}
         <div
           className="shadow-lg overflow-hidden"
-          style={{ width: '465.54px', height: '648.3px', marginTop: '60px' }}
+          style={{ width: '832px', height: '1248px', marginTop: '60px' }}
         >
           <img
             src={generatedImageUrl}

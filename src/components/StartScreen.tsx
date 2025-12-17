@@ -23,7 +23,7 @@ export default function StartScreen({ onStart }: StartScreenProps) {
             backgroundImage: 'url(/startbg.png)',
             width: '357.75px',
             height: '102.75px',
-            marginTop: '840px'
+            marginTop: '1040px'
           }}
         >
         </button>
