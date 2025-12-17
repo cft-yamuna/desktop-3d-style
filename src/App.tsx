@@ -7,6 +7,7 @@ import ProcessingScreen from './components/ProcessingScreen';
 import OutputScreen from './components/OutputScreen';
 import { supabase } from './lib/supabase';
 import type { Screen } from './types';
+import InstallPrompt from './components/InstallPrompt';
 
 const ai = new GoogleGenAI({
   apiKey: import.meta.env.VITE_GEMINI_API_KEY,
@@ -18,10 +19,10 @@ const compositeImageWithBackdrop = async (
 ): Promise<Blob> => {
   return new Promise(async (resolve, reject) => {
     try {
-      // Create canvas with backdrop dimensions (1200x1980)
+      // Create canvas with backdrop dimensions (1200x1800) - 4x6 print ratio
       const canvas = document.createElement('canvas');
       canvas.width = 1200;
-      canvas.height = 1980;
+      canvas.height = 1800;
       const ctx = canvas.getContext('2d');
       if (!ctx) throw new Error('Could not get canvas context');
 
@@ -30,18 +31,18 @@ const compositeImageWithBackdrop = async (
       backdrop.crossOrigin = 'anonymous';
       backdrop.onload = () => {
         // Draw backdrop at full canvas size
-        ctx.drawImage(backdrop, 0, 0, 1200, 1980);
+        ctx.drawImage(backdrop, 0, 0, 1200, 1800);
 
         // Load and draw generated image
         const generatedImage = new Image();
         generatedImage.crossOrigin = 'anonymous';
         generatedImage.onload = () => {
-          // Resize generated image to 832x1248 and center on backdrop
-          // Centered position: X = (1200 - 832) / 2 = 184, Y = (1980 - 1248) / 2 = 366
-          const targetWidth = 832;
-          const targetHeight = 1248;
-          const x = (1200 - targetWidth) / 2; // 184
-          const y = (1980 - targetHeight) / 2; // 366
+          // Resize generated image to 90% of previous size (749x1123) and center on backdrop
+          // Previous: 832x1248
+          const targetWidth = 749;  // 832 * 0.9
+          const targetHeight = 1123; // 1248 * 0.9
+          const x = (1200 - targetWidth) / 2;
+          const y = (1800 - targetHeight) / 2;
 
           // Draw generated image at calculated position with target dimensions
           ctx.drawImage(generatedImage, x, y, targetWidth, targetHeight);
@@ -264,6 +265,7 @@ The tent card serves as a personalized branded promotional material featuring bo
 
   return (
     <>
+      <InstallPrompt />
       {currentScreen === 'start' && <StartScreen onStart={handleStart} />}
       {currentScreen === 'capture' && <CaptureScreen onCapture={handleCapture} />}
       {currentScreen === 'preview' && (
