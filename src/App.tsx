@@ -38,18 +38,49 @@ function App() {
 
     const figurinePrompt = `Generate the output image in PORTRAIT orientation (4:6 aspect ratio, taller than wide).
 
-Create a HYPER-REALISTIC, 8k resolution close-up photograph of a premium custom figurine placed on a desk.
+Create a HYPER-REALISTIC, 8K resolution close-up photograph of a premium custom figurine placed on a desk.
 
 THE FIGURINE:
-- It must look EXACTLY like the person in the photo—capturing their precise facial features, skin texture, hairstyle, and outfit with uncanny resemblance.
-- The figure has a high-quality hand-painted resin finish with realistic shading and textures.
-- It stands on a simple, round, clear acrylic base.
+
+It must look EXACTLY like the person in the photo — capturing precise facial features, skin texture, hairstyle, and outfit with uncanny resemblance.
+
+The figure has a high-quality hand-painted resin finish with realistic shading and textures.
+
+It stands on a simple, round, clear acrylic base.
 
 THE ENVIRONMENT:
-- The setting is a realistic workspace. Behind the figure, a computer monitor displays 3D sculpting software showing the digital model of this same person.
-- Next to it sits a premium "Collector's Edition" packaging box featuring stylistic 2D artwork of the character.
-- Lighting is cinematic and soft (studio quality), highlighting the figurine against a naturally blurred background (depth of field).
-- Overall look: Masterpiece, product photography, unreal engine 5 render style, extremely detailed.`;
+
+The setting is a realistic workspace.
+
+Behind the figure, a computer monitor displays 3D sculpting software showing the digital model of the same person.
+
+THE TENT CARD (CRITICAL ELEMENT):
+
+Next to the figurine, place a premium TENT CARD (A-frame tabletop display stand).
+
+The tent card must have PhonePe branding with the EXACT official logo:
+- At the top of the tent card, display the PhonePe logo consisting of:
+  - The "पे" (Pe) symbol icon in solid purple/violet color (#5F259F)
+  - Next to it, the text "PhonePe" in clean white letters on a dark purple background
+- The logo must be EXACTLY as the official PhonePe brand - no redesign, no stylization, no artistic interpretation
+- Maintain exact proportions, typography, icon shape, spacing, and colors of the original logo
+- The logo should appear as a clean, flat, professionally printed logo
+
+The tent card should have:
+- Premium matte or glossy cardstock finish
+- Clean A-frame/triangular tent card shape standing upright
+- Professional print quality with sharp edges
+- Realistic paper texture and subtle shadows
+- The PhonePe purple (#5F259F) as the primary brand color accent
+
+TENT CARD CONTENT LAYOUT (top to bottom):
+1. PhonePe logo at the very top (as described above)
+2. Below the logo, display the USER'S PHOTO/IMAGE prominently on the tent card
+   - The user's face/image should be clearly visible and recognizable
+   - It should look like a professionally printed photo on the card
+   - The image should be well-framed and centered on the tent card
+
+The tent card serves as a personalized branded promotional material featuring both PhonePe branding and the user's image.`;
 
     try {
       // Get base64 from captured image
